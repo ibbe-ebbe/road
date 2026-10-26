@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Label (editable)</title>
+<style>
+  :root { --bg:#e6e6e6; --hint:#555; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#242424; --hint:#b0b0b0; } }
+  html, body { margin:0; background:var(--bg); font-family:Arial, Helvetica, "Liberation Sans", sans-serif; }
+  .bar { display:flex; gap:8px; align-items:center; justify-content:center; padding:10px; flex-wrap:wrap; color:var(--hint); font-size:14px; }
+  .bar button { font:inherit; padding:8px 14px; border:1px solid #888; border-radius:6px; background:#fff; color:#111; cursor:pointer; }
+  .wrap { display:flex; justify-content:center; padding:8px 12px 24px; }
+  .sheet { width:100%; max-width:1000px; box-sizing:border-box; padding:5%; background:#fff; box-shadow:0 1px 8px rgba(0,0,0,.3); }
+  .stage { position:relative; width:100%; aspect-ratio:2318/1261; background:#fff; color:#000; container-type:inline-size; }
+  .layer { position:absolute; inset:0; --u: calc(100cqw / 2318); }
+  .stage svg.art { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .t { position:absolute; white-space:pre; line-height:1; color:#000; outline:none; cursor:text; font-family:Arial, Helvetica, "Liberation Sans", sans-serif; }
+  .t:hover, .t:focus { background:rgba(255,230,0,.45); }
+  #t_H:hover, #t_H:focus { background:rgba(255,255,255,.35); }
+  #curved { cursor:pointer; }
+  #curved:hover { fill:#b00; }
+  #stampInput { position:absolute; left:calc(var(--u)*1685.56); top:calc(var(--u)*941.60);
+      width:calc(var(--u)*500); font:700 calc(var(--u)*50) Arial,Helvetica,sans-serif; text-align:center; box-sizing:border-box; display:none; z-index:5; border:2px solid #06c; background:#fffbe0; color:#000; }
+  .st0 {stroke:#000;stroke-width:10.42;stroke-miterlimit:2.61313;fill:none}
+  .st1 {stroke:#000;stroke-width:6.94;stroke-miterlimit:2.61313}
+  .fil0 {fill:none} .fil1 {fill:#000}
+  .hint { max-width:1000px; margin:0 auto; padding:0 12px 20px; font-size:13px; color:var(--hint); text-align:center; }
+
+  /* Print: same size and position as the original A4 page (units are 1/1000 inch) */
+  @media print {
+    @page { size:A4; margin:0; }
+    html, body { background:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .bar, .hint { display:none !important; }
+    .wrap { display:block; padding:0; }
+    .sheet { padding:0; box-shadow:none; max-width:none; width:auto; }
+    .stage { position:absolute; left:37.80mm; top:95.94mm; width:58.88mm; max-width:none; box-shadow:none; }
+    .t:hover, .t:focus { background:transparent !important; }
+    #stampInput { display:none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="bar">
+  <span>Click any text to edit it. Click the curved stamp text to change it. The barcode follows the number.</span>
+  <button onclick="window.print()">Print (A4, original size)</button>
+  <button onclick="location.reload()">Reset</button>
+</div>
+<div class="wrap">
+<div class="sheet">
+<div class="stage">
+  <svg class="art" viewBox="1488 3777 2318 1261" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+    <defs>
+      <path id="arc" d="M 3198.97 4446.86 A 239.0 239.0 0 1 0 3648.15 4446.86"/>
+    </defs>
+    <rect x="1488" y="3777" width="2318" height="1261" fill="#fff"/>
+        <rect class="fil0 st0" x="1498.18" y="3786.91" width="2297.43" height="1240.65"/>
+    <rect class="fil1 st1" x="1498.18" y="3786.9" width="2297.43" height="230.41"/>
+    <rect class="fil0 st0" x="1498.18" y="4194.55" width="1546.39" height="704.52"/>
+    <rect class="fil0 st0" x="1498.18" y="4194.55" width="2297.43" height="706.73"/>
+    <g id="barcode"><svg id="bcsvg" x="3095.0" y="4010.6" width="650.0" height="187.3" viewBox="0 0 100 1" preserveAspectRatio="none"></svg></g>
+    <path class="fil0 st1" d="M3423.56 4259.19c148.79,0 269.4,120.62 269.4,269.41 0,148.79 -120.61,269.41 -269.4,269.41 -148.78,0 -269.4,-120.62 -269.4,-269.41 0,-148.79 120.61,-269.41 269.4,-269.41z"/>
+    <text id="curved" font-family="Arial, Helvetica, 'Liberation Sans', sans-serif" font-weight="700" font-size="64.0" text-anchor="middle" fill="#000" letter-spacing="5.300"><textPath id="curvedPath" href="#arc" startOffset="50%">Shiyam’s Motor Garage</textPath></text>
+  </svg>
+  <div class="layer">
+        <span class="t" id="t_H" contenteditable="true" spellcheck="false" style="font-size:calc(var(--u)*166.760); top:calc(var(--u)*43.938); font-weight:700; left:calc(var(--u)*602.400); transform-origin:0 0; letter-spacing:calc(var(--u)*51.734); color:#fff">A0A0000</span>
+    <span class="t" id="t_N" contenteditable="true" spellcheck="false" style="font-size:calc(var(--u)*138.687); top:calc(var(--u)*241.401); font-weight:700; left:calc(var(--u)*416.285); transform-origin:0 0; transform:scale(0.9893,1.0000)">1032619876</span>
+    <span class="t" id="t_F" contenteditable="true" spellcheck="false" style="font-size:calc(var(--u)*112.556); top:calc(var(--u)*440.571); font-weight:700; left:calc(var(--u)*37.839); transform-origin:0 0; transform:scale(0.9945,1.0000)">From:</span>
+    <span class="t" id="t_T" contenteditable="true" spellcheck="false" style="font-size:calc(var(--u)*112.570); top:calc(var(--u)*564.390); font-weight:700; left:calc(var(--u)*41.713); transform-origin:0 0; transform:scale(0.9875,1.0000)">To:</span>
+    <span class="t" id="t_D1" contenteditable="true" spellcheck="false" style="font-size:calc(var(--u)*111.034); top:calc(var(--u)*445.010); font-weight:700; left:calc(var(--u)*518.124); transform-origin:0 0; transform:scale(0.9939,1.0981)">08-10-2026</span>
+    <span class="t" id="t_D2" contenteditable="true" spellcheck="false" style="font-size:calc(var(--u)*111.034); top:calc(var(--u)*561.910); font-weight:700; left:calc(var(--u)*517.124); transform-origin:0 0; transform:scale(0.9940,1.0000)">07-10-2027</span>
+    <span class="t" id="t_d1" contenteditable="true" spellcheck="false" style="font-size:calc(var(--u)*94.693); top:calc(var(--u)*693.343); font-weight:400; left:calc(var(--u)*41.096); transform-origin:0 0">BJ8B00-010A</span>
+    <span class="t" id="t_d2" contenteditable="true" spellcheck="false" style="font-size:calc(var(--u)*94.413); top:calc(var(--u)*789.629); font-weight:400; left:calc(var(--u)*41.186); transform-origin:0 0; transform:scale(1.0020,1.0000)">MH3SE88D0LJ235236</span>
+    <span class="t" id="t_d3" contenteditable="true" spellcheck="false" style="font-size:calc(var(--u)*94.693); top:calc(var(--u)*889.843); font-weight:400; left:calc(var(--u)*41.412); transform-origin:0 0; transform:scale(0.9982,1.0000)">E3R2E-2767036</span>
+    <span class="t" id="t_d4" contenteditable="true" spellcheck="false" style="font-size:calc(var(--u)*94.972); top:calc(var(--u)*990.946); font-weight:400; left:calc(var(--u)*43.948); transform-origin:0 0; transform:scale(0.9788,1.0000)">125.00</span>
+    <span class="t" id="t_FT" contenteditable="true" spellcheck="false" style="font-size:calc(var(--u)*96.369); top:calc(var(--u)*1136.424); font-weight:700; left:calc(var(--u)*178.720); transform-origin:0 0; transform:scale(0.9902,1.0000)">SHIYAM MOTOR GARAGE, TEL: 332 3691</span>
+    <span class="t" id="t_S1" contenteditable="true" spellcheck="false" style="font-size:calc(var(--u)*63.547); top:calc(var(--u)*600.707); font-weight:700; left:calc(var(--u)*1937.500); transform-origin:50% 0; transform:translateX(-50%) scale(0.9880,1.0000)">Authorized</span>
+    <span class="t" id="t_S2" contenteditable="true" spellcheck="false" style="font-size:calc(var(--u)*63.547); top:calc(var(--u)*670.207); font-weight:700; left:calc(var(--u)*1940.500); transform-origin:50% 0; transform:translateX(-50%) scale(0.9598,1.0000)">by</span>
+    <span class="t" id="t_S3" contenteditable="true" spellcheck="false" style="font-size:calc(var(--u)*64.246); top:calc(var(--u)*740.616); font-weight:700; left:calc(var(--u)*1938.500); transform-origin:50% 0; transform:translateX(-50%) scale(0.9671,1.0000)">Shiyam</span>
+    <input id="stampInput" type="text" spellcheck="false" aria-label="Curved stamp text">
+  </div>
+</div>
+</div>
+</div>
+<div class="hint">Reset restores the original text. Edits are not saved.</div>
+
+<script>
+const P=["212222", "222122", "222221", "121223", "121322", "131222", "122213", "122312", "132212", "221213", "221312", "231212", "112232", "122132", "122231", "113222", "123122", "123221", "223211", "221132", "221231", "213212", "223112", "312131", "311222", "321122", "321221", "312212", "322112", "322211", "212123", "212321", "232121", "111323", "131123", "131321", "112313", "132113", "132311", "211313", "231113", "231311", "112133", "112331", "132131", "113123", "113321", "133121", "313121", "211331", "231131", "213113", "213311", "213131", "311123", "311321", "331121", "312113", "312311", "332111", "314111", "221411", "431111", "111224", "111422", "121124", "121421", "141122", "141221", "112214", "112412", "122114", "122411", "142112", "142211", "241211", "221114", "413111", "241112", "134111", "111242", "121142", "121241", "114212", "124112", "124211", "411212", "421112", "421211", "212141", "214121", "412121", "111143", "111341", "131141", "114113", "114311", "411113", "411311", "113141", "114131", "311141", "411131", "211412", "211214", "211232", "2331112"];
+function encode(text){
+  const digits = /^\d+$/.test(text) && text.length % 2 === 0;
+  const codes = [];
+  if (digits) { codes.push(105); for (let i=0;i<text.length;i+=2) codes.push(parseInt(text.substr(i,2),10)); }
+  else { codes.push(104); for (const ch of text) { const c=ch.charCodeAt(0); if (c>=32 && c<=126) codes.push(c-32); } }
+  let sum = codes[0]; for (let i=1;i<codes.length;i++) sum += codes[i]*i;
+  codes.push(sum % 103); codes.push(106);
+  return codes;
+}
+function drawBarcode(){
+  const svg = document.getElementById('bcsvg');
+  const text = document.getElementById('t_N').textContent.trim();
+  svg.innerHTML = '';
+  if (!text) return;
+  const widths = encode(text).map(c => P[c]).join('');
+  const total = [...widths].reduce((a,b)=>a+ +b,0);
+  svg.setAttribute('viewBox','0 0 '+total+' 1');
+  let x = 0, out = '';
+  [...widths].forEach((w,i)=>{ w=+w; if (i%2===0) out += '<rect x="'+x+'" y="0" width="'+w+'" height="1" fill="#000"/>'; x+=w; });
+  svg.innerHTML = out;
+}
+document.getElementById('t_N').addEventListener('input', drawBarcode);
+drawBarcode();
+
+// keep single-line fields on one line
+document.querySelectorAll('.t').forEach(el => {
+  el.addEventListener('keydown', e => { if (e.key==='Enter') { e.preventDefault(); el.blur(); } });
+  el.addEventListener('paste', e => { e.preventDefault(); const t=(e.clipboardData||window.clipboardData).getData('text').replace(/\s+/g,' '); document.execCommand('insertText', false, t); });
+});
+
+// curved stamp text
+const curved = document.getElementById('curved'), cp = document.getElementById('curvedPath'), inp = document.getElementById('stampInput');
+curved.addEventListener('click', () => { inp.value = cp.textContent; inp.style.display='block'; inp.focus(); inp.select(); });
+inp.addEventListener('input', () => { cp.textContent = inp.value; });
+inp.addEventListener('blur', () => { inp.style.display='none'; });
+inp.addEventListener('keydown', e => { if (e.key==='Enter' || e.key==='Escape') inp.blur(); });
+</script>
+</body>
+</html>
