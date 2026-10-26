@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Label (editable)</title>
+<title>Road</title>
 <style>
   :root { --bg:#e6e6e6; --hint:#555; }
   @media (prefers-color-scheme: dark) { :root { --bg:#242424; --hint:#b0b0b0; } }
@@ -109,6 +109,24 @@ function drawBarcode(){
 }
 document.getElementById('t_N').addEventListener('input', drawBarcode);
 drawBarcode();
+
+// dates: From = today (editable), To = From + 364 days (recalculates when From is edited; also editable)
+const dFrom = document.getElementById('t_D1'), dTo = document.getElementById('t_D2');
+const pad = n => String(n).padStart(2,'0');
+const fmt = d => pad(d.getUTCDate())+'-'+pad(d.getUTCMonth()+1)+'-'+d.getUTCFullYear();
+function parseDMY(t){
+  const m = /^\s*(\d{1,2})-(\d{1,2})-(\d{4})\s*$/.exec(t); if (!m) return null;
+  const d = new Date(Date.UTC(+m[3], +m[2]-1, +m[1]));
+  return (d.getUTCDate()===+m[1] && d.getUTCMonth()===+m[2]-1) ? d : null;
+}
+function updateTo(){
+  const d = parseDMY(dFrom.textContent); if (!d) return;
+  d.setUTCDate(d.getUTCDate()+364); dTo.textContent = fmt(d);
+}
+const now = new Date();
+dFrom.textContent = fmt(new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate())));
+updateTo();
+dFrom.addEventListener('input', updateTo);
 
 // keep single-line fields on one line
 document.querySelectorAll('.t').forEach(el => {
